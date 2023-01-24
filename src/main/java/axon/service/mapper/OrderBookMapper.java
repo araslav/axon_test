@@ -22,7 +22,7 @@ public class OrderBookMapper {
     }
 
     public OrderBook getOrderBookObj() {
-        OrderBook orderBook = null;
+        OrderBook orderBook;
         try {
             orderBook = objectMapper.readValue(url, OrderBook.class);
         } catch (IOException e) {

@@ -8,14 +8,14 @@ import java.util.Map;
 
 public class PriceLevel {
 
-    public List<String> getDifferencePriceLevels(String[][] firstArray, String[][] secondArray, String size) {
+    public List<String> getDifferencePriceLevels(String[][] currentArray, String[][] prevArray, String size) {
         Map<String, String> map = new HashMap<>();
-        for (String[] item : secondArray) {
+        for (String[] item : prevArray) {
             map.put(item[0] , item[1]);
         }
 
         List<String> returnList = new ArrayList<>();
-        for (String[] value : firstArray) {
+        for (String[] value : currentArray) {
             if (map.containsKey(value[0]) && map.get(value[0]).equals(value[1])) {
                 map.remove(value[0], value[1]);
             } else if (map.containsKey(value[0])) {
@@ -29,7 +29,7 @@ public class PriceLevel {
 
         if(!map.isEmpty()) {
             for (Map.Entry<String, String> entry : map.entrySet()) {
-                returnList.add("new [" + size + "] (" + entry.getKey() + ", " + entry.getValue() + ")");
+                returnList.add("delete [" + size + "] (" + entry.getKey() + ", " + entry.getValue() + ")");
             }
         }
 

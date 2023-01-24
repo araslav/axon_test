@@ -13,6 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         orderBookRepository = new OrderBookRepository();
+
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         ScheduledFuture<?> future = executor.scheduleWithFixedDelay(() -> {
             someMethod();
